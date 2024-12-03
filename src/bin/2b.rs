@@ -1,6 +1,6 @@
 use std::io;
 
-fn is_safe(nums: Vec<i32>) -> bool {
+fn is_safe(nums: &Vec<i32>) -> bool {
     let df = nums[1] - nums[0];
     for i in 1..nums.len() {
         let diff = nums[i] - nums[i - 1];
@@ -9,6 +9,17 @@ fn is_safe(nums: Vec<i32>) -> bool {
         }
     }
     true
+}
+
+fn is_nearly_safe(nums: &Vec<i32>) -> bool {
+    for i in 0..nums.len() {
+        let mut a = nums[0..i].to_vec();
+        a.extend(&nums[i + 1..nums.len()]);
+        if is_safe(&a) {
+            return true;
+        }
+    }
+    false
 }
 
 fn main() {
@@ -23,7 +34,7 @@ fn main() {
             .map(|x| x.parse().unwrap())
             .collect();
 
-        if is_safe(nums) {
+        if is_nearly_safe(&nums) {
             sum += 1;
         }
     }
