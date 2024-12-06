@@ -1,6 +1,6 @@
-use std::io;
+use std::{error::Error, io};
 
-fn main() {
+fn main() -> Result<(), Box<dyn Error>> {
     for line in io::stdin().lines() {
         let line = line.unwrap();
         if line.trim().is_empty() {
@@ -11,4 +11,6 @@ fn main() {
             .map(|x| x.parse().unwrap())
             .collect();
     }
+
+    Ok(())
 }
