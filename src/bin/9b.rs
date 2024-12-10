@@ -1,4 +1,5 @@
 use std::{ error::Error, io::stdin };
+// use itertools::Itertools;
 
 #[derive(Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
 struct Block {
@@ -44,6 +45,14 @@ fn main() -> Result<(), Box<dyn Error>> {
         };
     }
 
+    // println!(
+    //     "{}",
+    //     file_blocks
+    //         .iter()
+    //         .map(i32::to_string)
+    //         .map(|x| if x == "-1" { ".".to_string() } else { x })
+    //         .join("")
+    // );
     for block in filled_blocks.iter().rev() {
         let mut i = 1;
         while i < N / 2 {
