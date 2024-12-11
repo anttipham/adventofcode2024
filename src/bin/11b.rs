@@ -1,4 +1,4 @@
-use std::{ collections::HashMap, error::Error, hash::Hash, io::stdin };
+use std::{ collections::HashMap, error::Error, io::stdin };
 
 fn main() -> Result<(), Box<dyn Error>> {
     let mut stones: HashMap<u64, u64> = stdin()
